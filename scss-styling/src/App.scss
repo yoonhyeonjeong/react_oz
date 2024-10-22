@@ -1,0 +1,44 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+$font-big: 50px;
+$font-mid: 40px;
+$font-small: 30px;
+$font-bold: 900;
+$font-thin: 200;
+$color-blue: rgb(96, 130, 215);
+
+.test {
+    font-size: $font-big;
+    font-weight: $font-bold;
+}
+h2 {
+    color: $color-blue;
+    font-weight: $font-bold;
+    font-size: $font-mid;
+}
+@mixin flex($align: start, $justify: start, $gap: 0, $direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+}
+@mixin font($color, $size, $weight) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+}
+ul {
+    @include flex($gap: 20px, $direction: column);
+    @include font(blue, $font-mid, $font-bold);
+}
+section {
+    width: 90vw;
+    @include flex(center, space-between, 20px);
+    @include font($color-blue, $font-small, $font-thin);
+}
