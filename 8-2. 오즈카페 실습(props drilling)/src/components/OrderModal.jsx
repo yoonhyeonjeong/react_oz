@@ -1,7 +1,8 @@
 import {useState} from "react";
 import data from "../assets/data";
-
-function OrderModal({modalMenu, setModalOn, cart, setCart}) {
+import {useCart} from "../context/cartContext";
+function OrderModal({modalMenu, setModalOn}) {
+    const {cart, addToCart} = useCart();
     const [options, setOptions] = useState({온도: 0, 진하기: 0, 사이즈: 0});
     const [quantity, setQuantity] = useState(1);
     const itemOptions = data.options;
@@ -48,7 +49,7 @@ function OrderModal({modalMenu, setModalOn, cart, setCart}) {
                             </div>
                             <button
                                 onClick={() => {
-                                    setCart([...cart, {quantity, options, id: modalMenu.id}]);
+                                    addToCart(quantity, options, modalMenu.id);
                                     setModalOn(false);
                                     console.log(cart, "cart");
                                 }}
